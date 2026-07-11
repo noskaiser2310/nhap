@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Course Details</title>
+</head>
+<body>
+<div class="container mt-5">
+    <h1>{{ course.name }}</h1>
+    
+    <div class="list-group">
+    {% for lesson in course.lesson_set.all %}
+        <div class="list-group-item">
+            <h4>{{ lesson.title }}</h4>
+            <p>{{ lesson.content }}</p>
+        </div>
+    {% endfor %}
+    </div>
+
+    <form action="{% url 'onlinecourse:submit' course.id %}" method="post" class="mt-4">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Submit Exam</button>
+    </form>
+    
+    {% if passed is not None %}
+        <div class="alert {% if passed %}alert-success{% else %}alert-danger{% endif %} mt-4">
+            {% if passed %}
+                <h4>Congratulations!</h4>
+            {% else %}
+                <h4>Sorry, you failed.</h4>
+            {% endif %}
+            <p>Your score is: {{ score }}%</p>
+            <p>Exam results: {% if passed %}Passed{% else %}Failed{% endif %}</p>
+        </div>
+    {% endif %}
+</div>
+</body>
+</html>
