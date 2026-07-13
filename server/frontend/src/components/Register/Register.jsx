@@ -13,14 +13,17 @@ const Register = () => {
     };
 
     return (
-        <form onSubmit={handleRegister}>
-            <input type="text" placeholder="Username" value={userName} onChange={(e) => setUserName(e.target.value)} required />
-            <input type="text" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
-            <input type="text" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
-            <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-            <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-            <button type="submit">Register</button>
-        </form>
+        <div>
+            <h1>Sign-up</h1>
+            <form onSubmit={handleRegister}>
+                <input type="text" name="Username" placeholder="Username" value={userName} onChange={(e) => setUserName(e.target.value)} required />
+                <input type="text" name="First Name" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
+                <input type="text" name="Last Name" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
+                <input type="email" name="Email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                <input type="password" name="Password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                <button type="submit">Register</button>
+            </form>
+        </div>
     );
 };
 
